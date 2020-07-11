@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@types/jest": "^26.0.4",
@@ -13,9 +14,12 @@
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
     "react": "~16.11.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
+    "react-native-elements": "^2.0.4",
     "react-native-web": "~0.11.7",
+    "react-test-renderer": "^16.13.1",
     "ts-jest": "^26.1.1"
   },
   "devDependencies": {
@@ -25,22 +29,7 @@
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "\\.snap$",
-      "<rootDir>/node_modules/"
-    ],
-    "cacheDirectory": ".jest/cache"
+    "preset": "react-native"
   },
   "private": true
 }

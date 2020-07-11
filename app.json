@@ -21,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "authApi": "https://pure-energy-api--phase2-dev.azurewebsites.net/Auth"
     }
   }
 }
