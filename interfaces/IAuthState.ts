@@ -4,5 +4,4 @@ export default interface IAuthState {
     isAuthenticating: boolean,
     isError: boolean,
     accessToken: string,
-    refreshToken: string
 }

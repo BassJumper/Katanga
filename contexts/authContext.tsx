@@ -1,22 +1,30 @@
-import React, { createContext, useReducer, useState, useEffect } from "react"
-import AuthService from "../services/authService"
+import React, { createContext, useReducer, useState, useEffect } from "react";
+import AuthService from "../services/authService";
+import { authReducer } from "../reducers/authReducer";
 import IAuthState from "../interfaces/IAuthState"
-import IAuthService from "../interfaces/IAuthService"
-import { authReducer } from "../reducers/authReducer"
+import IAuthService from "../interfaces/IAuthService";
 
-interface IContextProps { state: IAuthState; dispatch: React.Dispatch<{}>, authService: IAuthService }
+interface IContextProps {
+  state: IAuthState;
+  dispatch: React.Dispatch<any>;
+  authService: IAuthService;
+}
 
 const initialState : IAuthState = {
   username: "",
   password: "",
+  accessToken: "",
   isAuthenticating: false,
   isError: false,
-  accessToken: "",
-  refreshToken: ""
-}
+};
 
 const authService = new AuthService();
-const AuthContext = createContext({state: initialState, dispatch: () => {}, authService: authService} as IContextProps);
+
+const AuthContext = createContext({
+  state: initialState,
+  dispatch: () => {},
+  authService: authService,
+} as IContextProps);
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -39,4 +47,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthContext, AuthProvider }
+export { AuthContext, AuthProvider };

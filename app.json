@@ -24,6 +24,11 @@
     },
     "extra": {
       "authApi": "https://pure-energy-api--phase2-dev.azurewebsites.net/Auth"
-    }
+    },
+    "sdkVersion": "38.0.0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

@@ -1,21 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
+import 'react-native-gesture-handler';
+import React from "react"
+import { AuthProvider } from "./contexts/AuthContext"
+import MainNavigation from "./screens/MainNavigation";
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-      <Text>Here's where we're gonna add our Login Component!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <AuthProvider>
+        <MainNavigation />
+      </AuthProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
