@@ -1,5 +1,6 @@
 import ILoginResponse from "../interfaces/ILoginResponse"
 import IAuthService from "../interfaces/IAuthService"
+import axios from "axios"
 
 export default class AuthService implements IAuthService {
   get apiUrl() {
@@ -7,9 +8,7 @@ export default class AuthService implements IAuthService {
   }
 
   async login(username: string, password: string) : Promise<ILoginResponse> {
-    const response = await fetch(`${this.apiUrl}?username=${username}&password=${password}`);
-    const responseJson = await response.json();
-    return responseJson;
+    return axios.get(`${this.apiUrl}?username=${username}&password=${password}`, { timeout: 5000 }) as Promise<ILoginResponse>
   }
 }
 
