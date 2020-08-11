@@ -20,7 +20,7 @@ const useAuthContext = () => {
           refreshToken: response.refreshToken,
           payload: {}
         });
-      }).catch(function (){ dispatch({type: "LOGIN_FAILED"}) })
+      }).catch(function (){ dispatch({type: "LOGIN_ERROR"}) })
   }
 
   const setUsername = async (username) => {
