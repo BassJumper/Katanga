@@ -1,7 +1,7 @@
 console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed']
 import { Container, Left, Body, Right, Icon, ListItem, Toast, Root } from "native-base";
 import React, { useState, useEffect }  from "react";
-import { ActivityIndicator, View, FlatList, StyleSheet, Text, Button, Dimensions } from "react-native";
+import { ActivityIndicator, View, FlatList, StyleSheet, Text, Button, Dimensions, Platform } from "react-native";
 import useAuthContext from "../hooks/useAuthContext";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import IonIcons from "react-native-vector-icons/Ionicons"
@@ -310,10 +310,10 @@ export default function Main() {
 
   return (
       <Container style={styles.container}>
-          
-          <View
+          { Platform.OS === 'ios' ? (
+            <View
             style={{
-              height:191,
+              height: 200,
               alignSelf: 'stretch',
               borderBottomColor: '#777777',
               borderBottomWidth: 1
@@ -328,6 +328,21 @@ export default function Main() {
                 </View>
             }
           </View>
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+              }}>
+              <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                style={{ alignSelf: 'stretch', height: "175%" }}
+              />
+              {scanned && <Button color="#7dc242" title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+            </View>
+          )}
+        
           <View style={{ flexDirection: "row",
                          backgroundColor: "#181818",
                          height: 40,
